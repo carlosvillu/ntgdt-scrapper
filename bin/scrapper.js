@@ -15,4 +15,7 @@ program
 program
   .command('visto-en-redes', 'Parse 2 pages of http://www.vistoenlasredes.com')
 
+program
+  .command('cuanto-cabron', 'Parse 2 pages of http://www.cuantocabron.com')
+
 program.parse(process.argv)
