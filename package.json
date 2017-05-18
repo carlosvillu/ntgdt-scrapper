@@ -1,0 +1,25 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "scrapper": "./bin/scrapper.js"
+  },
+  "scripts": {
+    "scrapper": "run-p scrapper:*",
+    "scrapper:cuanto-danio": "./bin/scrapper.js cuanto-danio -V",
+    "scrapper:visto-en-redes": "./bin/scrapper.js visto-en-redes -V"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "2.9.0",
+    "firebase-admin": "4.2.1",
+    "osmosis": "1.1.4"
+  },
+  "devDependencies": {
+    "npm-run-all": "4.0.2"
+  }
+}
