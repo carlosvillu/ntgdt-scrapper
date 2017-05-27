@@ -2,7 +2,7 @@ const program = require('commander')
 
 // Firebase
 const firebase = require("firebase-admin")
-firebase.initializeApp(require(`${__dirname}/../firebase-admin-credentials.json`))
+firebase.initializeApp(require(process.env.FIREBASE_CREDENTIALS || `${__dirname}/../firebase-admin-credentials.json`))
 const create = exports.create = async entry => {
   const db = firebase.database()
   const snapshot = await db.ref(`/entries/${entry.id}`).once('value')
@@ -23,8 +23,10 @@ const log = exports.log = verbose(console.log)
 exports.superLog = superVerbose(console.log)
 
 // Mapper
+const isEmpty = obj => Object.keys(obj).length === 0
 exports.done = (site, entries) => {
   Promise.all(entries.map(data => {
+    if (isEmpty(data)) { return Promise.resolve() }
     const id = require('crypto').createHash('md5').update(data.link).digest('hex')
     const createdAt = Date.now()
     return create(Object.assign(data, {id, createdAt, site}))

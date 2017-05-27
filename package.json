@@ -8,7 +8,7 @@
   },
   "scripts": {
     "scrapper": "run-p scrapper:*",
-    "scrapper:cuanto-danio": "./bin/scrapper.js cuanto-danio -V",
+    "_scrapper:cuanto-danio": "./bin/scrapper.js cuanto-danio -V",
     "scrapper:visto-en-redes": "./bin/scrapper.js visto-en-redes -V",
     "scrapper:cuanto-cabron": "./bin/scrapper.js cuanto-cabron -V"
   },
