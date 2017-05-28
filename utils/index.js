@@ -21,9 +21,9 @@ const blurImage = url => {
       sharp()
         .resize(14)
         .blur()
-        .webp()
+        .png()
         .toBuffer((err, data) => {
-          resolve('data:image/webp;base64,' + data.toString('base64'))
+          resolve('data:image/png;base64,' + data.toString('base64'))
         })
     request(url).pipe(transform)
   })
