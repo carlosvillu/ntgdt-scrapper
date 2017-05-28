@@ -1,5 +1,5 @@
 {
-  "name": "scrapper",
+  "name": "@carlosvillu/scrapper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,7 +18,9 @@
   "dependencies": {
     "commander": "2.9.0",
     "firebase-admin": "4.2.1",
-    "osmosis": "1.1.4"
+    "osmosis": "1.1.4",
+    "request": "2.81.0",
+    "sharp": "0.17.3"
   },
   "devDependencies": {
     "npm-run-all": "4.0.2"

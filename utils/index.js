@@ -1,4 +1,6 @@
 const program = require('commander')
+const request = require('request')
+const sharp = require('sharp')
 
 // Firebase
 const firebase = require("firebase-admin")
@@ -7,9 +9,24 @@ const create = exports.create = async entry => {
   const db = firebase.database()
   const snapshot = await db.ref(`/entries/${entry.id}`).once('value')
   if (snapshot.val() == null) {
+    entry.image && (entry.image_blur = await blurImage(entry.image))
     log(entry)
     return db.ref(`/entries/${entry.id}`).set(entry)
   }
+}
+
+const blurImage = url => {
+  return new Promise(resolve => {
+    const transform =
+      sharp()
+        .resize(14)
+        .blur()
+        .webp()
+        .toBuffer((err, data) => {
+          resolve('data:image/webp;base64,' + data.toString('base64'))
+        })
+    request(url).pipe(transform)
+  })
 }
 
 // CLI
