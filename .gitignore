@@ -1,3 +1,6 @@
 .DS_Store
 node_modules/
 firebase-admin-credentials.json
+.COMMANDS
+.tern-port
+firebase-admin-credentials.development.json
