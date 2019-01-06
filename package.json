@@ -10,7 +10,8 @@
     "scrapper": "run-p scrapper:*",
     "_scrapper:cuanto-danio": "./bin/scrapper.js cuanto-danio -V",
     "scrapper:visto-en-redes": "./bin/scrapper.js visto-en-redes -V",
-    "scrapper:cuanto-cabron": "./bin/scrapper.js cuanto-cabron -V"
+    "scrapper:cuanto-cabron": "./bin/scrapper.js cuanto-cabron -V",
+    "scrapper:vaya-gif": "./bin/scrapper.js vaya-gif -V"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,8 @@
     "sharp": "0.17.3"
   },
   "devDependencies": {
+    "@s-ui/lint": "2",
     "npm-run-all": "4.0.2"
-  }
+  },
+   "eslintConfig": { "extends": ["./node_modules/@s-ui/lint/eslintrc.js"] }
 }
