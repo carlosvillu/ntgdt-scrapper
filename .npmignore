@@ -1,3 +1,4 @@
+.tern-port
 firebase-admin-credentials.json
 firebase-admin-credentials.development.json
 firebase-admin-credentials.production.json
