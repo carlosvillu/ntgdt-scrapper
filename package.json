@@ -1,6 +1,6 @@
 {
   "name": "@carlosvillu/scrapper",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,8 @@
     "_scrapper:cuanto-danio": "./bin/scrapper.js cuanto-danio -V",
     "scrapper:visto-en-redes": "./bin/scrapper.js visto-en-redes -V",
     "scrapper:cuanto-cabron": "./bin/scrapper.js cuanto-cabron -V",
-    "scrapper:vaya-gif": "./bin/scrapper.js vaya-gif -V"
+    "scrapper:vaya-gif": "./bin/scrapper.js vaya-gif -V",
+    "scrapper:explosm": "./bin/scrapper.js vaya-gif -V"
   },
   "keywords": [],
   "author": "",
