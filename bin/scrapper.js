@@ -17,5 +17,6 @@ program.command(
 
 program.command('cuanto-cabron', 'Parse 2 pages of http://www.cuantocabron.com')
 program.command('vaya-gif', 'Parse 1 pages of https://www.vayagif.com')
+program.command('explosm', 'Parse 1 pages of explosm.net')
 
 program.parse(process.argv)
