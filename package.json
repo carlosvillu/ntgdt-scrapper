@@ -1,6 +1,6 @@
 {
   "name": "@carlosvillu/scrapper",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -27,5 +27,9 @@
     "@s-ui/lint": "2",
     "npm-run-all": "4.0.2"
   },
-   "eslintConfig": { "extends": ["./node_modules/@s-ui/lint/eslintrc.js"] }
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/@s-ui/lint/eslintrc.js"
+    ]
+  }
 }
