@@ -6,6 +6,7 @@ const {NODE_ENV = 'development'} = process.env
 
 // Firebase
 const firebase = require('firebase-admin')
+exports.firebase = firebase
 firebase.initializeApp(
   require(process.env.FIREBASE_CREDENTIALS ||
     `${__dirname}/../firebase-admin-credentials.${NODE_ENV}.json`)
@@ -28,6 +29,7 @@ const blurImage = url => {
       .blur()
       .png()
       .toBuffer((err, data) => {
+        err && console.error(err)
         resolve('data:image/png;base64,' + data.toString('base64'))
       })
     request(url).pipe(transform)
