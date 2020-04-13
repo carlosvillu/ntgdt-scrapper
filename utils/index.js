@@ -11,16 +11,47 @@ firebase.initializeApp(
   require(process.env.FIREBASE_CREDENTIALS ||
     `${__dirname}/../firebase-admin-credentials.${NODE_ENV}.json`)
 )
+const db = firebase.database()
+
 const create = (exports.create = async entry => {
-  const db = firebase.database()
   const snapshot = await db.ref(`/entries/${entry.id}`).once('value')
-  if (snapshot.val() == null) {
-    entry.image && (entry.image_blur = await blurImage(entry.image))
-    entry.video && (entry.image_blur = await blurImage(entry.video.poster))
+
+  const url = entry.image || (entry.video && entry.video.poster)
+  if (url && snapshot.val() == null) {
+    entry.image && (entry.image_blur = await blurImage(url))
+    entry.video && (entry.image_blur = await blurImage(url))
+
+    const dimensions = await getDimension(entry)
+
+    entry.width = dimensions.width
+    entry.height = dimensions.height
+
     log(entry)
     return db.ref(`/entries/${entry.id}`).set(entry)
   }
 })
+
+const updateEntry = async (entry, dimensions) => {
+  await db.ref(`/entries/${entry.id}`).set({
+    ...entry,
+    width: dimensions.width,
+    height: dimensions.height
+  })
+}
+const getDimension = entry =>
+  new Promise(resolve => {
+    const url = entry.image || (entry.video && entry.video.poster)
+    request({url, encoding: null}, async (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return resolve({width: 0, height: 0})
+      }
+
+      const metadata = await sharp(body).metadata()
+      ;(entry.width === undefined || entry.height === undefined) &&
+        (await updateEntry(entry, metadata))
+      resolve(metadata)
+    })
+  })
 
 const blurImage = url => {
   return new Promise(resolve => {
