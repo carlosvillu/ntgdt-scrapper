@@ -4,3 +4,4 @@ firebase-admin-credentials.json
 .COMMANDS
 .tern-port
 firebase-admin-credentials.development.json
+firebase-admin-credentials.production.json
